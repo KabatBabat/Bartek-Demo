@@ -2,7 +2,7 @@
 
 class MainShopPage {
     elements = {
-
+        mainHeader: () => cy.get('[class="col-sm-4 header-logo"]'),
     }
 
     inputs = {
@@ -15,7 +15,6 @@ class MainShopPage {
         cartButton: () => cy.get('[class="top-cart"]'),
         acccountButton: () => cy.get('[class="top-account"]'),
         searchInputButton: () => cy.get('[class="search-top-bar-submit"]'),
-
     }
 
     goToEmail() {
