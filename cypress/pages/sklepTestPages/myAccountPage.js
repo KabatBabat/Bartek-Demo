@@ -4,7 +4,9 @@ class MyAccountPage {
 
     elements = {
         myAccountheader: () => cy.get('[class="page-title margin-top"]'),
-        incorrectLoginInfo: () => cy.get('[class="woocommerce-error"]')
+        incorrectLoginInfo: () => cy.get('[class="woocommerce-error"]'),
+        accountContent: () => cy.get('[class="woocommerce-MyAccount-content"]'),
+
     }
 
     buttons = {
@@ -13,6 +15,8 @@ class MyAccountPage {
         rememberMeButton: () => cy.get('[class="woocommerce-form__input woocommerce-form__input-checkbox"]'),
         lostPasswordButton: () => cy.xpath('//p[contains(@class, "woocommerce-LostPassword")]//a'),
         resetPasswordButton: () => cy.xpath('//input[contains(@value, "Reset password")]'),
+        myAccountListButtons: (buttonName) => cy.get(`[class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--${buttonName}"]`),
+        confirmLogoutButton: () => cy.xpath('//div[@class="woocommerce-message"]//a')
     }
 
     inputs = {
@@ -56,5 +60,13 @@ class MyAccountPage {
         this.buttons.resetPasswordButton().click();
     }
     
+    clickButtonFromMyAccountList(buttonName) {
+        this.buttons.myAccountListButtons(buttonName).click();
+
+    }
+
+    confirmLogoutButton() {
+        this.buttons.confirmLogoutButton().click();
+    }
 }
 export default new MyAccountPage();

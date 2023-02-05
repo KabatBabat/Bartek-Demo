@@ -7,13 +7,12 @@ class MainShopPage {
 
     inputs = {
         searchInput: () => cy.get('[class="search-field-top-bar"]'),
-
     }
 
     buttons = {
         emailButton: () => cy.get('[class="top-email"]'),
         cartButton: () => cy.get('[class="top-cart"]'),
-        acccountButton: () => cy.get('[class="top-account"]'),
+        accountButton: () => cy.get('[class="top-account"]'),
         searchInputButton: () => cy.get('[class="search-top-bar-submit"]'),
     }
 
@@ -26,7 +25,7 @@ class MainShopPage {
     }
 
     goToAccount() {
-        this.buttons.acccountButton().click();
+        this.buttons.accountButton().click();
     }
 
     enterInputInSearchField(value) {

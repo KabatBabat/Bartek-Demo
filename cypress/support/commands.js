@@ -23,3 +23,12 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+import mainPage from "../pages/sklepTestPages/mainPage"
+import myAccountPage from "../pages/sklepTestPages/myAccountPage";
+
+
+Cypress.Commands.add('customerLogin', ({email, password}) => {
+    mainPage.goToAccount();
+    myAccountPage.enterLoginAndPassword({ email, password });
+})

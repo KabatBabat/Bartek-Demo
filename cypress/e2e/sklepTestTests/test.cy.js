@@ -5,13 +5,13 @@ import myAccountPage from "../../pages/sklepTestPages/myAccountPage";
 
 const testData = {
   login: 'Lorem ipsum dolor sit amet, consectetur adip',
-  password: 'Lorem ipsum dolor sit amet, consectetur adip',
+  passwordFake: 'Lorem ipsum dolor sit amet, consectetur adip',
   email: 'john@example.com',
   password: 'VfHvGRj8UmbCwp'
 }
 
-describe('template spec', () => {
-  before(() => {
+describe('Skleptest my account test', () => {
+  beforeEach(() => {
     cy.visit('https://skleptest.pl/')
   })
 
@@ -22,7 +22,7 @@ describe('template spec', () => {
     myAccountPage.clickLoginButton();
     myAccountPage.elements.incorrectLoginInfo()
       .should('be.visible').and('contain', 'Username is required.');
-    myAccountPage.enterLoginAndPassword(testData.login, testData.password);
+    myAccountPage.enterLoginAndPassword(testData.login, testData.passwordFake);
     myAccountPage.elements.incorrectLoginInfo()
       .should('be.visible').and('contain', 'Invalid username.');
     myAccountPage.lostPassword();
@@ -32,6 +32,19 @@ describe('template spec', () => {
     myAccountPage.elements.incorrectLoginInfo()
       .should('be.visible').and('contain', 'Invalid username or email');
   });
+
+  it('Successfully login and logout', () => {
+    mainPage.goToAccount();
+    cy.url()
+      .should('include', '/my-account/');
+    myAccountPage.enterLoginAndPassword(testData.email, testData.password);
+    myAccountPage.elements.accountContent()
+      .should('be.visible').and('contain', 'Hello john2');
+    myAccountPage.clickButtonFromMyAccountList("customer-logout");
+    myAccountPage.confirmLogoutButton();
+  });
+
+
 
 
 
