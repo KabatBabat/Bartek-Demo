@@ -2,12 +2,16 @@
 
 import mainPage from "../../pages/sklepTestPages/mainPage";
 import myAccountPage from "../../pages/sklepTestPages/myAccountPage";
+import myAccountTabsPage from "../../pages/sklepTestPages/myAccountTabsPage";
+import { faker } from '@faker-js/faker';
 
 const testData = {
   login: 'Lorem ipsum dolor sit amet, consectetur adip',
   passwordFake: 'Lorem ipsum dolor sit amet, consectetur adip',
   email: 'john@example.com',
-  password: 'VfHvGRj8UmbCwp'
+  password: 'VfHvGRj8UmbCwp',
+  randomEmail: faker.internet.email(),
+  randomPassword: faker.internet.password(12),
 }
 
 describe('Skleptest my account test', () => {
@@ -41,9 +45,15 @@ describe('Skleptest my account test', () => {
     myAccountPage.elements.accountContent()
       .should('be.visible').and('contain', 'Hello john2');
     myAccountPage.clickButtonFromMyAccountList("customer-logout");
-    myAccountPage.confirmLogoutButton();
+    myAccountTabsPage.logoutTab.confirmAndLogout();
   });
 
+  it.only('WIP random registration and add address info', () => { // tesn test trzeba przenieść do oddzielnego pliku i poprawic beforeEach zeby rejestrownie zaczynało sie przed testem
+    mainPage.goToAccount();
+    myAccountPage.registerAccount(testData.randomEmail, testData.randomPassword);
+    myAccountPage.moveMyAccountTab('edit-address');
+    myAccountTabsPage.addressesTab.editBillingAddress();
+  })
 
 
 
