@@ -23,7 +23,6 @@ class OrdersTab {
 class DownloadsTab {
     elements = {
         emptyDownloadListPlaceholder: () => cy.get('[class="woocommerce-Message woocommerce-Message--info woocommerce-info"]').contains('No downloads available yet.'),
-
     }
 
     // buttons = {

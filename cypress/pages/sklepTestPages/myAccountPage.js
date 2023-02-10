@@ -26,8 +26,8 @@ class MyAccountPage {
         forgotPasswordInput: () => cy.xpath('//input[contains(@name, "user_login")]')
     }
 
-    enterLoginAndPassword(username, password) {
-        this.inputs.loginInput().type(username);
+    enterLoginAndPassword({email, password}) {
+        this.inputs.loginInput().type(email);
         this.inputs.loginPasswordInput().type(password);
         this.buttons.loginButton().click();
     }

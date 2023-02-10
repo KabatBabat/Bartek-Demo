@@ -19,8 +19,8 @@ describe('Skleptest my account test', () => {
     cy.visit('https://skleptest.pl/')
   })
 
-  it('Fail try to login and go to forgot password screen', () => {
-    mainPage.goToAccount();
+  it.only('Fail try to login and go to forgot password screen', () => {
+    cy.customerLogin(Cypress.env("users")["userJohn"])
     cy.url()
       .should('include', '/my-account/');
     myAccountPage.clickLoginButton();
@@ -48,7 +48,7 @@ describe('Skleptest my account test', () => {
     myAccountTabsPage.logoutTab.confirmAndLogout();
   });
 
-  it.only('WIP random registration and add address info', () => { // tesn test trzeba przenieść do oddzielnego pliku i poprawic beforeEach zeby rejestrownie zaczynało sie przed testem
+  it('WIP random registration and add address info', () => { // tesn test trzeba przenieść do oddzielnego pliku i poprawic beforeEach zeby rejestrownie zaczynało sie przed testem
     mainPage.goToAccount();
     myAccountPage.registerAccount(testData.randomEmail, testData.randomPassword);
     myAccountPage.moveMyAccountTab('edit-address');

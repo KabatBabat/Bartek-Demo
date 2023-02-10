@@ -28,7 +28,7 @@ import mainPage from "../pages/sklepTestPages/mainPage"
 import myAccountPage from "../pages/sklepTestPages/myAccountPage";
 
 
-Cypress.Commands.add('customerLogin', ({email, password}) => {
+Cypress.Commands.add('customerLogin', (loginData) => {
     mainPage.goToAccount();
-    myAccountPage.enterLoginAndPassword({ email, password });
+    myAccountPage.enterLoginAndPassword(loginData);
 })
