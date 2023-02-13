@@ -47,16 +47,4 @@ describe('Skleptest my account test', () => {
     myAccountPage.clickButtonFromMyAccountList("customer-logout");
     myAccountTabsPage.logoutTab.confirmAndLogout();
   });
-
-  it('WIP random registration and add address info', () => { // tesn test trzeba przenieść do oddzielnego pliku i poprawic beforeEach zeby rejestrownie zaczynało sie przed testem
-    mainPage.goToAccount();
-    myAccountPage.registerAccount(testData.randomEmail, testData.randomPassword);
-    myAccountPage.moveMyAccountTab('edit-address');
-    myAccountTabsPage.addressesTab.editBillingAddress();
-  })
-
-
-
-
-
 })
