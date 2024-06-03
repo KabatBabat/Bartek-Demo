@@ -11,7 +11,6 @@ const testData = {
     companyName: faker.company.name(),
     addressOne: faker.address.streetAddress(),
     addressTwo: faker.address.buildingNumber(),
-    //postCode: faker.address.zipCode(), do poprawy na faker
     polishPostCode: "26-600",
     town: faker.address.cityName(),
     phone: faker.phone.number('500-###-###'),
@@ -25,7 +24,7 @@ describe('Skleptest my account test', () => {
         cy.visit('https://skleptest.pl/')
     })
 
-    it('WIP random registration and add address info', () => { // tesn test trzeba przenieść do oddzielnego pliku i poprawic beforeEach zeby rejestrownie zaczynało sie przed testem
+    it('WIP random registration and add address info', () => { 
         mainPage.goToAccount();
         myAccountPage.registerAccount(testData.randomEmail, testData.randomPassword);
         myAccountPage.moveMyAccountTab('edit-address');

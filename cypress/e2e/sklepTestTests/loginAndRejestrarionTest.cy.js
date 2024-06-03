@@ -19,7 +19,7 @@ describe('Skleptest my account test', () => {
     cy.visit('https://skleptest.pl/')
   })
 
-  it.only('Fail try to login and go to forgot password screen', () => {
+  it('Fail try to login and go to forgot password screen', () => {
     cy.customerLogin(Cypress.env("users")["userJohn"])
     cy.url()
       .should('include', '/my-account/');
